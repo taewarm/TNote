@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    tools:context=".Activity.LoginActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -48,20 +48,6 @@
                         android:layout_height="match_parent"
                         android:gravity="center"
                         android:text="쓰기"
-                        android:textColor="#000000"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:layout_margin="10dp"
-                    android:background="@drawable/layout_border_bottom">
-                    <TextView
-                        android:id="@+id/asdasd"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:text="회원번호"
                         android:textColor="#000000"/>
                 </LinearLayout>
             </LinearLayout>
