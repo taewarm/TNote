@@ -12,8 +12,12 @@ interface TNoteAPI {
     ): Call<Void>
 
     @GET("tae/UserID={id}&DlvDt={dlvdt}")
-    fun insertContent(
+    fun searchContent(
         @Path("id") id :String,
         @Path("dlvdt") dlvdt : String
     ): Call<List<ContentData>>
+
+    fun insertContent(
+        @Body id : JsonElement
+    ): Call<Void>
 }

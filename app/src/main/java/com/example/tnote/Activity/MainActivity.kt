@@ -13,6 +13,7 @@ class MainActivity : AppCompatActivity(){
         setContentView(R.layout.activity_main)
 
         val btn_read = findViewById<LinearLayout>(R.id.btn_main_read)
+        val btn_write = findViewById<LinearLayout>(R.id.btn_main_write)
         var userID : Long
         //여기서 날아오는 id값으로 날짜별 데이터 찾아서 데이터베이스 userid에 넣고
         userID = intent.getLongExtra("userId",0)
@@ -23,6 +24,9 @@ class MainActivity : AppCompatActivity(){
             intent.putExtra("userId",userID)
             startActivity(intent)
         }
-
+        btn_write.setOnClickListener {
+            val intent = Intent(this, WriteActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

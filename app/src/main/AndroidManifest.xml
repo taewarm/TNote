@@ -19,6 +19,7 @@
         </activity>
         <activity android:name=".Activity.MainActivity"/>
         <activity android:name=".Activity.ReadActivity"/>
+        <activity android:name=".Activity.WriteActivity"/>
         <activity android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />

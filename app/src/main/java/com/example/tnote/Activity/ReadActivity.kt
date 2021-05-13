@@ -47,24 +47,27 @@ class ReadActivity : AppCompatActivity() {
     fun APIContent(userID:Long,DlvDt:String){
         var contentt = findViewById<TextView>(R.id.read_contents)
         val titlee = findViewById<TextView>(R.id.read_title)
-        val response = RetrofitBuilder.getService().insertContent(userID.toString(),DlvDt)
+        val response = RetrofitBuilder.getService().searchContent(userID.toString(),DlvDt)
         response.enqueue(object : Callback<List<ContentData>> {
             override fun onResponse(call: Call<List<ContentData>>, response: Response<List<ContentData>>) {
                 Log.i("여기",response.body().toString())
                 var content : List<ContentData>? = response.body()
-                var title = ""
-                var contents = ""
-                if(content?.get(0)?.Content != null){
-                    contents = content?.get(0)?.Content
+                if(content?.size != 0){
+                    var title = ""
+                    var contents = ""
+                    if(content?.get(0)?.Content != null){
+                        contents = content?.get(0)?.Content
+                    }
+                    if(content?.get(0)?.Title!=null){
+                        title = content?.get(0)?.Title
+                    }
+                    contentt.setText(contents)
+                    titlee.setText(title)
+                }else{
+                    titlee.setText("내용 없음")
+                    contentt.setText("내용이 없습니다.")
                 }
-                if(content?.get(0)?.Title!=null){
-                    title = content?.get(0)?.Title
-                }
-                contentt.setText(contents)
-                titlee.setText(title)
-
             }
-
             override fun onFailure(call: Call<List<ContentData>>, t: Throwable) {
                 Log.i("여기Error",t.message.toString())
             }
