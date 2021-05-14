@@ -20,12 +20,14 @@ class MainActivity : AppCompatActivity(){
         Log.i("여기",userID.toString())
         btn_read.setOnClickListener {
             val intent = Intent(this, ReadActivity::class.java)
-            intent.getLongExtra("userId",0)
+//            intent.getLongExtra("userId",0)
             intent.putExtra("userId",userID)
             startActivity(intent)
         }
         btn_write.setOnClickListener {
             val intent = Intent(this, WriteActivity::class.java)
+//            intent.getLongExtra("userId",0)
+            intent.putExtra("userId",userID)
             startActivity(intent)
         }
     }

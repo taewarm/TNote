@@ -41,6 +41,7 @@ class ReadActivity : AppCompatActivity() {
 
 
         dlvdt.setText(year+"년"+month+"월"+day+"일")
+        Log.i("여기",UserID.toString())
         APIContent(UserID,year+month+day)
     }
 

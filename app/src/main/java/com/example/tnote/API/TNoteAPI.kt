@@ -6,7 +6,7 @@ import retrofit2.Call
 import retrofit2.http.*
 
 interface TNoteAPI {
-    @POST("content")
+    @POST("user")
     fun insertUser(
         @Body id : JsonElement
     ): Call<Void>
@@ -17,6 +17,7 @@ interface TNoteAPI {
         @Path("dlvdt") dlvdt : String
     ): Call<List<ContentData>>
 
+    @POST("content")
     fun insertContent(
         @Body id : JsonElement
     ): Call<Void>
