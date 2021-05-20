@@ -23,7 +23,7 @@
                 android:background="@drawable/layout_circle"
                 android:weightSum="10">
                 <LinearLayout
-                    android:id="@+id/btn_main_tnote"
+                    android:id="@+id/btn_main_read"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
@@ -33,11 +33,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:text="TNote"
+                        android:text="읽기"
                         android:textColor="#000000"/>
                 </LinearLayout>
                 <LinearLayout
-                    android:id="@+id/btn_main_weather"
+                    android:id="@+id/btn_main_write"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
@@ -47,7 +47,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:text="날씨"
+                        android:text="쓰기"
                         android:textColor="#000000"/>
                 </LinearLayout>
             </LinearLayout>
