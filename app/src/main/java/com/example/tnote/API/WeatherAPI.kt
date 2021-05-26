@@ -12,11 +12,13 @@ interface WeatherAPI {
 //        @Body id : JsonElement
 //    ): Call<Void>
 
-    @GET("data/2.5/weather")
+    @GET("data/2.5/onecall")
     fun getweather(
         @Query("lat") lat :String,
         @Query("lon") long : String,
+        @Query("exclude") exclude : String,
         @Query("appid") Key : String,
+        @Query("lang") lang : String,
     ): Call<WeatherData>
 //
 //    @POST("content")
