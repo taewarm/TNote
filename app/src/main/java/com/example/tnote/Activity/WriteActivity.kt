@@ -5,6 +5,8 @@ import android.content.Intent
 import android.hardware.input.InputManager
 import android.os.Bundle
 import android.util.Log
+import android.view.KeyEvent
+import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.LinearLayout
@@ -34,24 +36,24 @@ class WriteActivity : AppCompatActivity() {
         var btn_cancel = findViewById<LinearLayout>(R.id.btn_cancel)
         var btn_ok = findViewById<LinearLayout>(R.id.btn_ok)
 
+
         scrollview.setOnClickListener {
             wrt_edt_content.requestFocus()
         }
         var UserID : Long
 
         UserID = intent.getLongExtra("userId",0)
-
+        Log.i("여기",UserID.toString())
         txt_dlvdt.setText(dlvdtinit())
 
-        val intent = Intent(this, MainActivity::class.java)
         btn_ok.setOnClickListener {
             Log.i("여기","ok")
             var title = wrt_edt_title.text.toString()
             var content = wrt_edt_content.text.toString()
             Log.i("여기",title.length.toString()+","+content.length)
-            //APIInsertContent(UserID.toString(),dlvdtinit(),title,content)
-//            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-//            startActivity(intent)
+            APIInsertContent(UserID.toString(),dlvdtinit(),title,content)
+            onBackPressed()
+            onBackPressed()
         }
         btn_cancel.setOnClickListener {
             Log.i("여기","cancel")
@@ -63,7 +65,11 @@ class WriteActivity : AppCompatActivity() {
     }
     fun APIInsertContent(userID:String,dlvdt:String,title:String,content:String){
         //이런식으로 JSON형태로 대충 String 만들어주고 JSON으로 변환시킨다음 넣어버리기 그럼 Body로 쓸수있음
-        var JsonTestText = "{userID:"+userID+",DlvDt:"+dlvdt+",title:"+title+",content:"+content+"}"
+        var ttitle = title.replace(" ","%s")
+        var ccontent = content.replace(" ","%s")
+        ccontent = ccontent.replace("\n","%n")
+        Log.i("여기",ccontent)
+        var JsonTestText = "{userID:"+userID+",DlvDt:"+dlvdt+",title:"+ttitle+",content:"+ccontent+"}"
         var ConvertJson = JsonParser.parseString(JsonTestText)
         val response = RetrofitBuilder.getService().insertContent(ConvertJson)
         response.enqueue(object : Callback<Void> {

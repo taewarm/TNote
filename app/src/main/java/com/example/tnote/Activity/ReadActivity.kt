@@ -3,6 +3,7 @@ package com.example.tnote.Activity
 import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.tnote.DataClass.ContentData
 import com.example.tnote.R
@@ -57,7 +58,9 @@ class ReadActivity : AppCompatActivity() {
                     var title = ""
                     var contents = ""
                     if(content?.get(0)?.Content != null){
-                        contents = content?.get(0)?.Content
+                        contents = content?.get(0)?.Content!!.replace("%n","\n")
+                        Log.i("여기",contents)
+//                        contents = content?.get(0)?.Content
                     }
                     if(content?.get(0)?.Title!=null){
                         title = content?.get(0)?.Title
@@ -71,6 +74,7 @@ class ReadActivity : AppCompatActivity() {
             }
             override fun onFailure(call: Call<List<ContentData>>, t: Throwable) {
                 Log.i("여기Error",t.message.toString())
+                Toast.makeText(applicationContext,"서버를 키고 하세요",Toast.LENGTH_LONG).show()
             }
         })
     }

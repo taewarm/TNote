@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.LinearLayout
+import android.widget.Toast
 import com.example.tnote.R
 import com.example.tnote.API.RetrofitBuilder
 import com.google.gson.JsonParser
@@ -90,6 +91,7 @@ class LoginActivity : AppCompatActivity() {
                         Log.i(TAG,user.kakaoAccount?.birthday!!)
                     }
                     APIStart(id.toString(),name!!,email)
+                    Toast.makeText(this,"${user.kakaoAccount?.profile?.nickname}님 로그인",Toast.LENGTH_LONG).show()
                     startActivity(intent)
                 }
             }
