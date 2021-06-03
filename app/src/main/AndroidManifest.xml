@@ -23,6 +23,7 @@
         <activity android:name=".Activity.WriteActivity"/>
         <activity android:name=".Activity.TNoteActivity"/>
         <activity android:name=".Activity.WeatherActivity"/>
+        <activity android:name=".Activity.MusicActivity"/>
         <activity android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />

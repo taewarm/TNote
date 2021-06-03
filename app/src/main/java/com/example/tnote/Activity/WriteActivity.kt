@@ -8,10 +8,7 @@ import android.util.Log
 import android.view.KeyEvent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import android.widget.EditText
-import android.widget.LinearLayout
-import android.widget.ScrollView
-import android.widget.TextView
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.example.tnote.API.RetrofitBuilder
 import com.example.tnote.DataClass.ContentData
@@ -50,10 +47,19 @@ class WriteActivity : AppCompatActivity() {
             Log.i("여기","ok")
             var title = wrt_edt_title.text.toString()
             var content = wrt_edt_content.text.toString()
-            Log.i("여기",title.length.toString()+","+content.length)
-            APIInsertContent(UserID.toString(),dlvdtinit(),title,content)
-            onBackPressed()
-            onBackPressed()
+            if(title.length != 0 ){
+                if(content.length !=0){
+                    Log.i("여기",title.length.toString()+","+content.length)
+                    APIInsertContent(UserID.toString(),dlvdtinit(),title,content)
+                    onBackPressed()
+                    onBackPressed()
+                }else{
+                    Toast.makeText(this,"내용을 입력하십시오",Toast.LENGTH_SHORT).show()
+                }
+            }else{
+                Toast.makeText(this,"제목을 입력하십시오",Toast.LENGTH_SHORT).show()
+            }
+
         }
         btn_cancel.setOnClickListener {
             Log.i("여기","cancel")
